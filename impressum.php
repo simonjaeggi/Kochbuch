@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <!-- to here -->
+      <!-- Fill content to here -->
     </div>
     <?php include("includes/footer.html"); ?>
   </div>
