@@ -8,7 +8,7 @@
 <html>
 <?php include("includes/head.html"); ?>
 
-<body class="has-background-grey-darker">
+<body class="has-background-grey-darker has-text-white">
 	<div id="wrapper">
 		<?php include("includes/nav.php"); ?>
 		<div id="content">
@@ -22,10 +22,10 @@
 					</div>
 					<div class="column is-half">
 						<form action="php/insert_sql.php" method="post">
-							<h1 class="title has-text-white">Rezeptaufnahme</h1>
+							<h1 class="title">Rezeptaufnahme</h1>
 							<!-- Autor -->
 							<div class="block">
-								<h2 class="subtitle has-text-white">Autor des Rezepts</h2>
+								<h2 class="subtitle">Autor des Rezepts</h2>
 								<input type="text" name="autor" placeholder="Jamie Oliver" class="Input">
 
 
@@ -34,7 +34,7 @@
 
 							<!-- Gericht -->
 							<div class="block">
-								<h2 class="subtitle has-text-white">Gericht</h2>
+								<h2 class="subtitle">Gericht</h2>
 								<input type="text" name="gericht" placeholder="zB. Lasagne" class="Input">
 
 
@@ -43,8 +43,8 @@
 
 							<!-- Zutaten -->
 							<div id="Zutaten" class="block has-text-white">
-								<h2 class="subtitle has-text-white">Benötigte Zutaten</h2>
-								<input class="button" type="button" value="Zutat hinzufügen" onclick="createTextInputZutat()">
+								<h2 class="subtitle">Benötigte Zutaten</h2>
+								<input class="button is-primary" type="button" value="Zutat hinzufügen" onclick="createTextInputZutat()">
 
 								<div class="columns">
 									<div id="Zutaten_Zutat" class="column is-two-thirds">
@@ -58,21 +58,21 @@
 							</div>
 
 							<!-- Zubereitung -->
-							<div id="Zubereitung" class="block has-text-white">
-								<h2 class="subtitle has-text-white">Zubereitung</h2>
-								<input class="button" type="button" value="Zubereitungsschritt hinzufügen"
+							<div id="Zubereitung" class="block">
+								<h2 class="subtitle">Zubereitung</h2>
+								<input class="button is-primary" type="button" value="Zubereitungsschritt hinzufügen"
 									onclick="createTextAreaZubereitung()">
 							</div>
 
 
 							<!-- Tipp -->
 							<div class="block">
-								<h2 class="subtitle has-text-white">Tipp</h2>
+								<h2 class="subtitle">Tipp</h2>
 								<textarea name="tipp" placeholder="Tipps zum Rezept" class="Textarea"></textarea>
 							</div>
 
 							<!-- Submit -->
-							<input class="button" type="submit">
+							<input class="button is-primary" type="submit">
 						</form>
 
 					</div>

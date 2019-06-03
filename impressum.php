@@ -12,6 +12,8 @@
   <div id="wrapper">
     <?php include("includes/nav.php"); ?>
     <div id="content">
+
+
       <!-- Fill content from here -->
       <div id="content">
         <div class="block">
@@ -81,6 +83,8 @@
         </div>
       </div>
       <!-- Fill content to here -->
+
+
     </div>
     <?php include("includes/footer.html"); ?>
   </div>
