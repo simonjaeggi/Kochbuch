@@ -115,14 +115,13 @@ $mysqli->close();
 
                             <!-- Buttons -->
                             <div class="field">
-                                <p class="control" type="submit">
-                                    <button class="button is-success">
+                                    <button class="button is-success" type="submit">
                                         Login
                                     </button>
-                                    <button class="button is-info">
+                                    <button id="buttonRegister" class="button is-info">
                                         Registrieren
                                     </button>
-                                </p>
+                               
 
                             </div>
                         </form>
