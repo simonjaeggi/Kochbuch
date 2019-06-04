@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
         } else {
             $error .= "Länge und/oder Format des Benutzernamens stimmt nicht. <br>";
         }
-        
     }
 } else {
     $error .= "Geben Sie bitte den Benutzername an.<br />";
@@ -64,87 +63,59 @@ $mysqli->close();
 ?>
 
 
-<!DOCTYPE>
-<html>
-<?php include("includes/head.html"); ?>
-
-<body class="has-background-grey-darker has-text-white">
-    <div id="wrapper">
-        <?php include("includes/nav.php"); ?>
-        <div id="content">
-
-
-            <div class="block">
-                <div class="columns">
-                    <div class="column"></div>
-                    <div class="column is-half">
-                        <!-- Fill content from here -->
-
-                        <h1 class="title has-text-white">Login</h1>
-
-                        <?php
-                        // fehlermeldung oder nachricht ausgeben
-                        if (!empty($message)) {
-                            echo "<div class=\"notification is-info\">" . $message . "<button class=\"delete\"></button></div>";
-                        } else if (!empty($error)) {
-                            echo "<div class=\"notification is-danger\">" . $error . "<button class=\"delete\"></button></div>";
-                        }
-                        ?>
-                        <form action="" method="POST">
-
-
-                            <!-- Username -->
-                            <div class="field">
-                                <p class="control has-icons-left has-icons-right">
-                                    <input name="username" class="input" type="text" placeholder="Benutzername" maxlength="30" required="true" pattern="[a-zA-Z1-9._]{6,}" title="6-30 Zeichen. Grossbuchstaben, Kleinbuchstaben, 1-9, Sonderzeichen: ._">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </p>
-                            </div>
-
-                            <!-- Password -->
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input name="password" class="input" type="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title=" 8-30 Zeichen, keine Umlaute. Mindestens einen Gross-, einen Kleinbuchstaben und eine Zahl.">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </p>
-                            </div>
-
-                            <!-- Buttons -->
-                            <div class="field">
-                                    <button class="button is-success" type="submit">
-                                        Login
-                                    </button>
-                                    <button id="buttonRegister" class="button is-info">
-                                        Registrieren
-                                    </button>
-                               
-
-                            </div>
-                        </form>
-
-
-                        <!-- Fill content to here -->
-
-                    </div>
-                    <div class="column">
-
-                    </div>
-                </div>
-            </div>
+<?php include("includes/filestart.php"); ?>
+<!-- Fill content from here -->
 
 
 
 
+<h1 class="title has-text-white">Login</h1>
+
+<?php
+// fehlermeldung oder nachricht ausgeben
+if (!empty($message)) {
+    echo "<div class=\"notification is-info\">" . $message . "<button class=\"delete\"></button></div>";
+} else if (!empty($error)) {
+    echo "<div class=\"notification is-danger\">" . $error . "<button class=\"delete\"></button></div>";
+}
+?>
+<form action="" method="POST">
 
 
-        </div>
-        <?php include("includes/footer.html"); ?>
+    <!-- Username -->
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input name="username" class="input" type="text" placeholder="Benutzername" maxlength="30" required="true" pattern="[a-zA-Z1-9._]{6,}" title="6-30 Zeichen. Grossbuchstaben, Kleinbuchstaben, 1-9, Sonderzeichen: ._">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+        </p>
     </div>
-</body>
-<script src="js/navbar_toggle_isactive.js" charset="utf-8"></script>
 
-</html>
+    <!-- Password -->
+    <div class="field">
+        <p class="control has-icons-left">
+            <input name="password" class="input" type="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title=" 8-30 Zeichen, keine Umlaute. Mindestens einen Gross-, einen Kleinbuchstaben und eine Zahl.">
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
+        </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="field">
+        <button class="button is-success" type="submit">
+            Login
+        </button>
+        <button id="buttonRegister" class="button is-info">
+            Registrieren
+        </button>
+
+
+    </div>
+</form>
+
+
+
+<!-- Fill content to here -->
+<?php include("includes/fileend.php"); ?>
