@@ -4,29 +4,9 @@
 ?>
 
 
-<!DOCTYPE>
-<html>
-<?php include("includes/head.html"); ?>
-<body class="has-background-grey-darker">
-    <div id="wrapper">
-        <?php include("includes/nav.php"); ?>
-        <div id="content">
-        <!-- Fill content from here -->
+<?php include("includes/filestart.php"); ?>
+<!-- Fill content from here -->
 
 
-
-
-
-
-
-
-
-
-
-        <!-- Fill content to here -->
-        </div>
-        <?php include("includes/footer.html"); ?>
-    </div>
-</body>
-<script src="js/navbar_toggle_isactive.js" charset="utf-8"></script>
-</html>
+<!-- Fill content to here -->
+<?php include("includes/fileend.php"); ?>
