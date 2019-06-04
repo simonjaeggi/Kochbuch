@@ -11,12 +11,7 @@ $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // username
     if (!empty(trim($_POST['username']))) {
-        $username = trim($_POST['username']);
-        if (strlen($username) <= 30 && strlen($username) >= 6) {
-            $username = htmlspecialchars($username);
-        } else {
-            $error .= "Länge und/oder Format des Benutzernamens stimmt nicht. <br>";
-        }
+        $username = htmlspecialchars(trim($_POST['username']));
     }
 } else {
     $error .= "Geben Sie bitte den Benutzername an.<br />";
@@ -25,38 +20,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
 if (!empty(trim($_POST['password']))) {
     $password = trim($_POST['password']);
     // passwort gültig?
-    if (!preg_match("/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $password)) {
-        $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
-    }
 } else {
     $error .= "Geben Sie bitte das Passwort an.<br />";
 }
 
 // kein fehler
 if (empty($error)) {
-
-    // TODO SELECT Query erstellen, user und passwort mit Datenbank vergleichen
     $query = "select password from users where username =?";
-    // TODO prepare()
     $stmt = $mysqli->prepare($query);
-
-    // TODO bind_param()
     $stmt->bind_param("s", $username);
-
-    // TODO execute()
     $stmt->execute();
-    // TODO Passwort auslesen und mit dem eingegeben Passwort vergleichen
     $result = $stmt->get_result();
+
+    //abgleich
     while ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
-            // TODO: wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt"; 
             $message .= "Sie sind nun eingeloggt";
         } else {
             $error .= "Benutzername oder Passwort sind falsch";
         }
     }
-    // TODO: wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt"; 
-    // TODO: wenn Passwort falsch, oder kein Benutzer mit diesem Benutzernamem in DB: $error .= "Benutzername oder Passwort sind falsch";
+
 }
 $mysqli->close();
 
