@@ -2,7 +2,7 @@
 //Benötigte Informationen
 $host = 'localhost';
 $username = 'kochbuch_editor';
-$password = 'aDSF123@#§1sdf';
+$password = 'ASdf123:*SDsd';
 $database = 'kochbuch';
 
 //Instanzierung der Verbindungsvariable
@@ -12,3 +12,4 @@ $mysqli = new mysqli($host, $username, $password, $database);
 if ($mysqli->connect_error) {
   die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
+?>
