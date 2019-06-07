@@ -12,18 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // username
     if (!empty(trim($_POST['username']))) {
         $username = htmlspecialchars(trim($_POST['username']));
+    } else {
+        $error .= "Geben Sie bitte den Benutzername an.<br />";
     }
-} else {
-    $error .= "Geben Sie bitte den Benutzername an.<br />";
+    // password
+    if (!empty(trim($_POST['password']))) {
+        $password = trim($_POST['password']);
+        // passwort gültig?
+    } else {
+        $error .= "Geben Sie bitte das Passwort an.<br />";
+    }
 }
-// password
-if (!empty(trim($_POST['password']))) {
-    $password = trim($_POST['password']);
-    // passwort gültig?
-} else {
-    $error .= "Geben Sie bitte das Passwort an.<br />";
-}
-
 // kein fehler
 if (empty($error)) {
     $query = "select password from users where username =?";
@@ -40,7 +39,6 @@ if (empty($error)) {
             $error .= "Benutzername oder Passwort sind falsch";
         }
     }
-
 }
 $mysqli->close();
 
@@ -69,7 +67,7 @@ if (!empty($message)) {
     <!-- Username -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="username" class="input" type="text" placeholder="Benutzername" maxlength="30" required="true" pattern="[a-zA-Z1-9._]{6,}" title="6-30 Zeichen. Grossbuchstaben, Kleinbuchstaben, 1-9, Sonderzeichen: ._">
+            <input name="username" class="input" type="text" placeholder="Benutzername">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -79,7 +77,7 @@ if (!empty($message)) {
     <!-- Password -->
     <div class="field">
         <p class="control has-icons-left">
-            <input name="password" class="input" type="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title=" 8-30 Zeichen, keine Umlaute. Mindestens einen Gross-, einen Kleinbuchstaben und eine Zahl.">
+            <input name="password" class="input" type="password" placeholder="Password">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>

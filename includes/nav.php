@@ -7,8 +7,8 @@
     <nav class="navbar is-primary">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="#" style="font-weight:bold;">
-                    Kontakt<i class="fas fa-share" style="margin-left:1rem"></i>
+                <a class="navbar-item" href="login.php" style="font-weight:bold;">
+                  Login
                 </a>
                 <span class="navbar-burger burger" data-target="navMenu">
                     <span></span>
