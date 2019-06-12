@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
     if (empty($error)) {
-        $query = "insert into users (firstname, lastname, username, password, email)
+        $query = "insert into tbl_benutzer (Firstname, Lastname, Username, HashedPassword, Email)
                           values (?,?,?,?,?)";
         $stmt = $mysqli->prepare($query);
         $stmt->bind_param("sssss", $firstname, $lastname, $username, $hashedpassword, $email);

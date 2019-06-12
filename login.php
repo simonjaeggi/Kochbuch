@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
 }
 // kein fehler
 if (empty($error)) {
-    $query = "select password from users where username =?";
+    $query = "select HashedPassword from tbl_benutzer where Username =?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -33,7 +33,7 @@ if (empty($error)) {
 
     //abgleich
     while ($row = $result->fetch_assoc()) {
-        if (password_verify($password, $row['password'])) {
+        if (password_verify($password, $row['HashedPassword'])) {
             $message .= "Sie sind nun eingeloggt";
         } else {
             $error .= "Benutzername oder Passwort sind falsch";
@@ -89,12 +89,13 @@ if (!empty($message)) {
         <button class="button is-success" type="submit">
             Login
         </button>
+
         <button id="buttonRegister" class="button is-info">
             Registrieren
         </button>
 
-
     </div>
+
 </form>
 
 
