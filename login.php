@@ -1,7 +1,7 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
-
+$Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 include('php/db_connect.php');
 $error = '';
 $message = '';
@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // password
     if (!empty(trim($_POST['password']))) {
         $password = trim($_POST['password']);
-        // passwort gültig?
     } else {
         $error .= "Geben Sie bitte das Passwort an.<br />";
     }
@@ -35,6 +34,12 @@ if (empty($error)) {
     while ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['HashedPassword'])) {
             $message .= "Sie sind nun eingeloggt";
+            session_start();
+            $_SESSION['username'] = $username;
+            $_SESSION['loggedin'] = true;
+            echo $_SESSION['username'];
+            echo $_SESSION['loggedin'];
+            header('Location: index.php');
         } else {
             $error .= "Benutzername oder Passwort sind falsch";
         }
@@ -53,14 +58,7 @@ $mysqli->close();
 
 <h1 class="title has-text-white">Login</h1>
 
-<?php
-// fehlermeldung oder nachricht ausgeben
-if (!empty($message)) {
-    echo "<div class=\"notification is-info\">" . $message . "<button class=\"delete\"></button></div>";
-} else if (!empty($error)) {
-    echo "<div class=\"notification is-danger\">" . $error . "<button class=\"delete\"></button></div>";
-}
-?>
+
 <form action="" method="POST">
 
 
@@ -89,15 +87,10 @@ if (!empty($message)) {
         <button class="button is-success" type="submit">
             Login
         </button>
-
-        <button id="buttonRegister" class="button is-info">
-            Registrieren
-        </button>
-
     </div>
 
 </form>
-
+Noch kein Account? Registrieren Sie sich <a href="register.php">hier</a>.
 
 
 <!-- Fill content to here -->

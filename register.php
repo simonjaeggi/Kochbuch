@@ -1,13 +1,21 @@
 <!-- Fill navbar -->
-<?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
+<?php
+$message="";
+$error="";
+$nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
+session_start();
+if (isset($_SESSION['loggedin'])) {
+	$Login = "<a class='navbar-item' href='php/logout.php' style='font-weight:bold;'>Logout: ".$_SESSION['username']."</a>";
+} else {
+    $Login="<a class='navbar-item' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
+}
 
 
 include('php/db_connect.php');
 
 // Initialisierung
-$error = $message =  '';
 $firstname = $lastname = $email = $username = '';
 
 // Wurden Daten mit "POST" gesendet?
@@ -19,15 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (isset($_POST['lastname']) && !empty(trim($_POST['lastname']))) {
         $lastname = htmlspecialchars(trim($_POST['lastname']));
+    }else {
+        # code...
     }
     if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
         $email = htmlspecialchars(trim($_POST['email']));
+    }else {
+        # code...
     }
     if (isset($_POST['username']) && !empty(trim($_POST['username']))) {
         $username = htmlspecialchars(trim($_POST['username']));
+    }else {
+        # code...
     }
     if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
         $password = trim($_POST['password']);
+    }else {
+        # code...
     }
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -39,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $stmt->execute();
         $mysqli->close();
 
-        //header('Location: login.php');
+        header('Location: login.php');
     }
 }
 
@@ -49,15 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <?php include("includes/filestart.php"); ?>
 <!-- Fill content from here -->
 <h1 class="title has-text-white">Registration</h1>
-
-<?php
-// fehlermeldung oder nachricht ausgeben
-if (!empty($message)) {
-    echo "<div class=\"notification is-info\">" . $message . "<button class=\"delete\"></button></div>";
-} else if (!empty($error)) {
-    echo "<div class=\"notification is-danger\">" . $error . "<button class=\"delete\"></button></div>";
-}
-?>
 <form action="" method="post">
     <!-- vorname -->
     <div class="field">
