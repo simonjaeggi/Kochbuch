@@ -6,7 +6,6 @@ include('php/db_connect.php');
 $error = '';
 $message = '';
 
-
 // Formular wurde gesendet und Besucher ist noch nicht angemeldet.
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // username
@@ -31,6 +30,7 @@ if (empty($error)) {
     $result = $stmt->get_result();
 
     //abgleich
+
     while ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['HashedPassword'])) {
             $message .= "Sie sind nun eingeloggt";
@@ -40,7 +40,8 @@ if (empty($error)) {
             echo $_SESSION['username'];
             echo $_SESSION['loggedin'];
             header('Location: index.php');
-        } else {
+        }
+        else {
             $error .= "Benutzername oder Passwort sind falsch";
         }
     }
