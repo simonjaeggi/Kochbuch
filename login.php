@@ -48,6 +48,18 @@ if (empty($error)) {
 }
 $mysqli->close();
 
+/*
+//deaktivierung des login Buttons
+$('').button("disable");​​​​​​​​​​​​​
+
+$('.fields').bind('keyup', function() {
+var nameLength = $("#sub_first_name").length;
+var emailLength = $("#sub_email").length;
+
+if ( usernameLength> 0 && passwordLength > 0){
+  $
+}
+*/
 ?>
 
 
