@@ -10,7 +10,7 @@ include("includes/LoginButton.php");
 
 
 if (empty($error)) {
-    $query = "select Name, Tipp, ExtAutor from tbl_Rezept";
+    $query = "select Name, Tipp, ExtAutor from tbl_Rezept ORDER BY Name Asc";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -24,8 +24,10 @@ $mysqli->close();
 
 <?php include("includes/filestart.php"); ?>
 <!-- Fill content from here -->
+<h1 class="title has-text-white">Index</h1>
+
 <?php
-    echo "<table><tr><th>Name</th><th>Tipp</th><th>ExtAutor</th></tr>";
+    echo "<table class='table is-bordered is-hoverable is-fullwidth is-striped'><tr class='has-text-white'><th>Name</th><th>Tipp</th><th>ExtAutor</th></tr>";
     while ($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
         echo
         '<tr>

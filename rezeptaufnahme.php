@@ -4,10 +4,11 @@
 
 $message = "";
 $error = "";
+$autor=$gericht=$tipp=$user=""; 
 session_start();
 include("includes/LoginButton.php");
-
 include('php/db_connect.php');
+
 // Wurden Daten mit "POST" gesendet?
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $user = $_SESSION['userid'];
@@ -50,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <form action="" method="post">
 
 
-  <h1 class="title">Rezeptaufnahme</h1>
+  <h1 class="title has-text-white">Rezeptaufnahme</h1>
 
 
   <!-- Autor -->
-  <h2 class="subtitle">Autor des Rezepts</h2>
+  <h2 class="subtitle has-text-white">Autor des Rezepts</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
       <input name="autor" class="input" type="text" placeholder="Jamie Oliver">
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
   <!-- Gericht -->
-  <h2 class="subtitle">Gericht</h2>
+  <h2 class="subtitle has-text-white">Gericht</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
       <input name="gericht" class="input" type="text" placeholder="Lasagne">
@@ -79,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   <!-- Tipp -->
   <div class="block">
-    <h2 class="subtitle">Tipp</h2>
+    <h2 class="subtitle has-text-white">Tipp</h2>
     <textarea name="tipp" placeholder="Tipps zum Rezept" class="Textarea"></textarea>
   </div>
 
