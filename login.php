@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
 }
 // kein fehler
 if (empty($error)) {
-    $query = "select HashedPassword from tbl_benutzer where Username =?";
+    $query = "select * from tbl_benutzer where Username =?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -37,7 +37,7 @@ if (empty($error)) {
             session_start();
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = true;
-
+            $_SESSION['userid'] = $row['ID'];
             echo $_SESSION['username'];
             echo $_SESSION['loggedin'];
             header('Location: index.php');
