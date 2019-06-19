@@ -5,3 +5,4 @@ if (isset($_SESSION['loggedin'])) {
     $Login="<a class='navbar-item' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 }
 ?>
+ 

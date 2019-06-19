@@ -1,7 +1,7 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item is-active'>Rezeptaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
-
+ 
 $message = "";
 $error = "";
 $autor=$gericht=$tipp=$user=""; 

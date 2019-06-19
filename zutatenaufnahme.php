@@ -5,7 +5,7 @@ $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bol
 include('php/db_connect.php');
 $error = '';
 $message = '';
-
+ 
 
 // Formular wurde gesendet und Besucher ist noch nicht angemeldet.
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {

@@ -48,7 +48,7 @@ if (empty($error)) {
     }
 }
 $mysqli->close();
-
+ 
 /*
 //deaktivierung des login Buttons
 $('').button("disable");​​​​​​​​​​​​​
