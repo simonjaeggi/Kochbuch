@@ -15,8 +15,12 @@ $firstname = $lastname = $email = $username = '';
 
 // Wurden Daten mit "POST" gesendet?
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['firstname']) && !empty(trim($_POST['firstname']))) {
+    if (isset($_POST['firstname']) && !empty(trim($_POST['firstname'])) && strlen(trim($_POST['firstname'])) <= 50) {
         $firstname = htmlspecialchars(trim($_POST['firstname']));
+
+        if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]/", $firstname)){
+          $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
+        }
     } else {
         $error .= "Geben Sie bitte einen korrekten Vornamen ein.<br />";
     }
@@ -64,7 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- vorname -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="firstname" class="input" type="text" placeholder="Vorname" >
+            <input name="firstname" class="input" type="text" placeholder="Vorname"
+            required="true"
+              maxlength="50">
             <span class="icon is-small is-left">
                 <i class="far fa-id-badge"></i>
             </span>
@@ -73,7 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- nachname -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="lastname" class="input" type="text" placeholder="Nachname">
+            <input name="lastname" class="input" type="text" placeholder="Nachname"
+            required="true"
+              maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-id-badge"></i>
             </span>
@@ -84,7 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- email -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="email" class="input" type="email" placeholder="Email">
+            <input name="email" class="input" type="email" placeholder="Email"
+            required="true"
+              maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -93,7 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Username -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="username" class="input" type="text" placeholder="Benutzername">
+            <input name="username" class="input" type="text" placeholder="Benutzername"
+            required="true"
+              maxlength="50"
+                minlength="5">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -103,7 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Password -->
     <div class="field">
         <p class="control has-icons-left">
-            <input name="password" class="input" type="password" placeholder="Passwort">
+            <input name="password" class="input" type="password" placeholder="Passwort"
+            required="true"
+              maxlength="30"
+                minlength="8">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>

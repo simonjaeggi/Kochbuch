@@ -37,7 +37,7 @@ session_start();
 		<h2 class="subtitle">Benötigte Zutaten</h2>
 		<input class="button is-primary" type="button" value="Zutat hinzufügen" onclick="createTextInputZutat()">
 
-		<div class="columns">
+		<div class="column">
 			<div id="Zutaten_Zutat" class="column is-two-thirds">
 
 			</div>
