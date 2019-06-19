@@ -37,6 +37,7 @@ if (empty($error)) {
             session_start();
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = true;
+
             echo $_SESSION['username'];
             echo $_SESSION['loggedin'];
             header('Location: index.php');
@@ -64,6 +65,8 @@ if ( usernameLength> 0 && passwordLength > 0){
 
 
 <?php include("includes/filestart.php"); ?>
+
+
 <!-- Fill content from here -->
 
 

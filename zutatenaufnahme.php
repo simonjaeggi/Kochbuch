@@ -40,33 +40,21 @@ $mysqli->close();
 
 
 <form action="" method="POST">
-
-
-    <!-- Zutatenerfassen -->
-    <div class="field">
-        <p class="control has-icons-left has-icons-right">
-            <input name="zutat" class="input" type="text" placeholder="Zutat">
-            <span class="icon is-small is-left">
-                <i class="fas fa-pepper-hot"></i>
-            </span>
-          </div>
+  <!-- Zutatenerfassen -->
+  <div class="field">
+      <p class="control has-icons-left has-icons-right">
+          <input name="zutat" class="input" type="text" placeholder="Zutat">
+          <span class="icon is-small is-left">
+              <i class="fas fa-lemon"></i>
+          </span>
+      </p>
+  </div>
             <div class="field">
                 <button class="button is-success" type="submit">
                     Hinzufügen
                 </button>
             </div>
 
-
-
-
-    <!-- Buttons -->
-    <!--
-    <div class="field">
-        <button class="button is-success" type="submit">
-            Login
-        </button>
-    </div>
-    //-->
 </form>
 
 
