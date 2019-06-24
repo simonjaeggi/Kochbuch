@@ -53,8 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{5,}/", $username)){
     			$error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
     		}
-    }else {
-      error .= "Geben Sie bitte einen korrekten Benutzernamen ein.<br />";
+    }
+    else {
+      $error .= "Geben Sie bitte einen korrekten Benutzernamen ein.<br />";
     }
 //Passwort
     if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
