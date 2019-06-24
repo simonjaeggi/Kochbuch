@@ -1,5 +1,6 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
+            <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item is-active' is-active>Impressum</a>";
 session_start();
 ?>

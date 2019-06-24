@@ -1,5 +1,6 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
+            <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 include('php/db_connect.php');
@@ -48,19 +49,6 @@ if (empty($error)) {
     }
 }
 $mysqli->close();
- 
-/*
-//deaktivierung des login Buttons
-$('').button("disable");​​​​​​​​​​​​​
-
-$('.fields').bind('keyup', function() {
-var nameLength = $("#sub_first_name").length;
-var emailLength = $("#sub_email").length;
-
-if ( usernameLength> 0 && passwordLength > 0){
-  $
-}
-*/
 ?>
 
 

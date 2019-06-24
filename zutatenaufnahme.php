@@ -1,7 +1,10 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
+            <a href='zutatenaufnahme.php' class='navbar-item is-active'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
+session_start();
+include("includes/LoginButton.php");
 include('php/db_connect.php');
 $error = '';
 $message = '';
@@ -23,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     }
 
 }
-
+session_regenerate_id();
 // kein fehler
 if (empty($error)) {
     $query = "insert into tbl_zutat(Name)values (?)";
@@ -42,7 +45,7 @@ $mysqli->close();
 <?php include("includes/filestart.php"); ?>
 <!-- Fill content from here -->
 
-<h1 class="title has-text-white">Zutatenerfassen</h1>
+<h1 class="title has-text-white">Zutaten erfassen</h1>
 
 
 <form action="" method="POST">

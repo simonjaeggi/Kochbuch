@@ -4,6 +4,7 @@ $message="";
 $error="";
 $nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
+            <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 session_start();
 include("includes/LoginButton.php");
@@ -69,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
+    session_regenerate_id();
     if (empty($error)) {
         $query = "insert into tbl_benutzer (Firstname, Lastname, Username, HashedPassword, Email)
                           values (?,?,?,?,?)";

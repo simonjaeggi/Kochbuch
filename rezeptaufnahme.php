@@ -1,5 +1,6 @@
 <?php $nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item is-active'>Rezeptaufnahme</a>
+            <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
  
 $message = "";
@@ -30,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }else{
     $message .= "Sie haben keinen Tipp angegeben.";
   }
-
+  session_regenerate_id();
   if (empty($error)) {
     $query = "insert into tbl_Rezept (ExtAutor, Benutzer_ID, Name, Tipp)
                         values (?,?,?,?)";
