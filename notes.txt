@@ -1,5 +1,25 @@
+Unschönes:
+
 Keine Fehlermeldung bei falschem Benutzer und falschem pw
 Benutzer mit gleichem Namen können erstellt werden.
 Login Seite kann über URL erreicht werden, wenn bereits eingeloggt.
 
+Wichtiges:
 
+Passwort Reset funktion
+    Admin Seite für eingeloggte Benutzer
+    Benutzerinformationen anzeigen
+    Passwort reset funktion anbieten
+
+Testkonzept erstellen
+    Clientseitige Validierung
+    Serverseitige Validierung
+    Login
+    Registrieren
+    Passwort reset
+    Fehlermeldungen
+
+Falls nicht eingeloggt: 
+    Darf kein Rezept aufgenommen werden
+    Darf keine Zutat aufgenommen werden
+    

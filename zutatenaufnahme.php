@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
         $zutat = htmlspecialchars(trim($_POST['zutat']));
 
         if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z](?=.*\w+)/", $zutat)){
-      			$error .= "Der Nachnamname entspricht nicht dem geforderten Format.<br />";
+      			$error .= "Die Zutat entspricht nicht dem geforderten Format.<br />";
       		}
         }
 
