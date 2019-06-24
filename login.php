@@ -6,7 +6,11 @@ $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bol
 include('php/db_connect.php');
 $error = '';
 $message = '';
-
+session_start();
+//Benutzer weiterleiten falls bereits eingeloggt.
+if (isset($_SESSION['loggedin'])) {
+    header('Location: index.php');
+} 
 // Formular wurde gesendet und Besucher ist noch nicht angemeldet.
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // username
