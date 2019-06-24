@@ -39,8 +39,6 @@ if (empty($error)) {
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['ID'];
-            echo $_SESSION['username'];
-            echo $_SESSION['loggedin'];
             header('Location: index.php');
         }
         else {

@@ -8,7 +8,12 @@ $nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
 session_start();
 include('php/db_connect.php');
 include("includes/LoginButton.php");
+if (isset($_SESSION['loggedin'])) {
+	$message .= "Eingeloggt als: ".$_SESSION['username'];
+} else {
+    $message .= "Sie sind als Gast unterwegs. Um selbst Rezepte erfassen zu können, loggen Sie sich bitte ein.";
 
+}
 
 if (empty($error)) {
     $query = "select Name, Tipp, ExtAutor from tbl_Rezept ORDER BY Name Asc";
@@ -28,7 +33,7 @@ $mysqli->close();
 <h1 class="title has-text-white">Index</h1>
 
 <?php
-    echo "<table class='table is-bordered is-hoverable is-fullwidth is-striped'><tr class='has-text-white'><th>Name</th><th>Tipp</th><th>ExtAutor</th></tr>";
+    echo "<table class='table is-bordered is-hoverable is-fullwidth is-striped'><tr class='has-text-white'><th>Gericht</th><th>Tipp</th><th>Autor</th></tr>";
     while ($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
         echo
         '<tr>

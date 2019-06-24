@@ -2,17 +2,21 @@
             <a href='rezeptaufnahme.php' class='navbar-item is-active'>Rezeptaufnahme</a>
             <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
- 
+
 $message = "";
 $error = "";
-$autor=$gericht=$tipp=$user=""; 
+$autor = $gericht = $tipp = $user = "";
 session_start();
 include("includes/LoginButton.php");
 include('php/db_connect.php');
 
 // Wurden Daten mit "POST" gesendet?
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  $user = $_SESSION['userid'];
+  if (!isset($_SESSION['loggedin'])) {
+    $error .= "Sie müssen sich einloggen, um Rezepte erfassen zu können.";
+  } else {
+    $user = $_SESSION['userid'];
+  }
 
   if (isset($_POST['autor']) && !empty(trim($_POST['autor']))) {
     $autor = htmlspecialchars(trim($_POST['autor']));
@@ -28,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (isset($_POST['tipp']) && !empty(trim($_POST['tipp']))) {
     $tipp = htmlspecialchars(trim($_POST['tipp']));
-  }else{
-    $message .= "Sie haben keinen Tipp angegeben.";
+  } else {
+    $message .= "Sie haben keinen Tipp angegeben. <br>";
   }
   session_regenerate_id();
   if (empty($error)) {
@@ -38,10 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("siss", $autor, $user, $gericht, $tipp);
     $stmt->execute();
-    $mysqli->close();
 
-    $message .= 'Rezept erfolgreich abgesendet.';
+    if (empty($mysqli->error)) {
+      $message .= "Rezept wurde erfolgreich erfasst.";
+    } else {
+      $error .= "Folgender Fehler ist aufgetreten: " . $mysqli->error;
+    }
   }
+  $mysqli->close();
 }
 
 ?>
@@ -56,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
   <!-- Autor -->
-  <h2 class="subtitle has-text-white">Autor des Rezepts</h2>
+  <h2 class="subtitle has-text-white">Autor des Rezepts *</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
       <input name="autor" class="input" type="text" placeholder="Jamie Oliver">
@@ -68,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
   <!-- Gericht -->
-  <h2 class="subtitle has-text-white">Gericht</h2>
+  <h2 class="subtitle has-text-white">Gericht *</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
       <input name="gericht" class="input" type="text" placeholder="Lasagne">
