@@ -5,14 +5,20 @@ $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bol
 include('php/db_connect.php');
 $error = '';
 $message = '';
- 
+
 
 // Formular wurde gesendet und Besucher ist noch nicht angemeldet.
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // zutat
     if (!empty(trim($_POST['zutat']))) {
         $zutat = htmlspecialchars(trim($_POST['zutat']));
-    } else {
+
+        if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z](?=.*\w+)/", $zutat)){
+      			$error .= "Der Nachnamname entspricht nicht dem geforderten Format.<br />";
+      		}
+        }
+
+     else {
         $error .= "Geben Sie bitte eine Zutat an.<br />";
     }
 
@@ -43,7 +49,7 @@ $mysqli->close();
   <!-- Zutatenerfassen -->
   <div class="field">
       <p class="control has-icons-left has-icons-right">
-          <input name="zutat" class="input" type="text" placeholder="Zutat">
+          <input name="zutat" class="input" type="text" placeholder="Zutat"   required="true">
           <span class="icon is-small is-left">
               <i class="fas fa-lemon"></i>
           </span>

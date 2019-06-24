@@ -14,31 +14,57 @@ include('php/db_connect.php');
 $firstname = $lastname = $email = $username = '';
 
 // Wurden Daten mit "POST" gesendet?
+//Vorname
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['firstname']) && !empty(trim($_POST['firstname']))) {
         $firstname = htmlspecialchars(trim($_POST['firstname']));
-    } else {
+    if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z](?=.*\w+)/", $firstname)){
+  			$error .= "Der Vorname entspricht nicht dem geforderten Format.<br />";
+  		  }
+      }
+      else {
         $error .= "Geben Sie bitte einen korrekten Vornamen ein.<br />";
     }
+//Nachname
     if (isset($_POST['lastname']) && !empty(trim($_POST['lastname']))) {
         $lastname = htmlspecialchars(trim($_POST['lastname']));
-    }else {
-        # code...
+        if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z](?=.*\w+)/", $lastname)){
+      			$error .= "Der Nachnamname entspricht nicht dem geforderten Format.<br />";
+      		}
+        }
+      else {
+        $error .= "Geben Sie bitte einen korrekten Nachnamen ein.<br />";
     }
+//emailadresse
     if (isset($_POST['email']) && !empty(trim($_POST['email']))) {
         $email = htmlspecialchars(trim($_POST['email']));
-    }else {
-        # code...
+        //validirung nach RFC 822
+      if(!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
+        $error .= "die emailadresse entspricht nicht dem geforderten Format.<br />";
+        }
     }
+    else {
+      $error .= "Geben Sie bitte einen korrekte emailadresse ein.<br />";
+    }
+//Username
     if (isset($_POST['username']) && !empty(trim($_POST['username']))) {
         $username = htmlspecialchars(trim($_POST['username']));
+
+        if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{5,}/", $username)){
+    			$error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
+    		}
     }else {
-        # code...
+      error .= "Geben Sie bitte einen korrekten Benutzernamen ein.<br />";
     }
+//Passwort
     if (isset($_POST['password']) && !empty(trim($_POST['password']))) {
         $password = trim($_POST['password']);
+
+        if(!preg_match("/(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $password)){
+          $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
+        }
     }else {
-        # code...
+      $error .= "Geben Sie bitte ein korrektes Passwort ein.<br />";
     }
     $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -64,7 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- vorname -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="firstname" class="input" type="text" placeholder="Vorname" >
+            <input name="firstname" class="input" type="text" placeholder="Vorname"
+            required="true"
+            maxlength="50">
             <span class="icon is-small is-left">
                 <i class="far fa-id-badge"></i>
             </span>
@@ -73,7 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- nachname -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="lastname" class="input" type="text" placeholder="Nachname">
+            <input name="lastname" class="input" type="text" placeholder="Nachname"
+            required="true"
+            maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-id-badge"></i>
             </span>
@@ -84,7 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- email -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="email" class="input" type="email" placeholder="Email">
+            <input name="email" class="input" type="email" placeholder="Email"
+            required="true"
+            maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -93,7 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Username -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="username" class="input" type="text" placeholder="Benutzername">
+            <input name="username" class="input" type="text" placeholder="Benutzername"
+            required="true"
+            minlength= "5"
+            maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -103,7 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Password -->
     <div class="field">
         <p class="control has-icons-left">
-            <input name="password" class="input" type="password" placeholder="Passwort">
+            <input name="password" class="input" type="password" placeholder="Passwort"
+            required="true"
+            minlength= "8"
+            maxlength="50">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
