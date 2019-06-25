@@ -2,7 +2,7 @@
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
             <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
-$Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
+$Login = "<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 include('php/db_connect.php');
 $error = '';
 $message = '';
@@ -44,8 +44,7 @@ if (empty($error)) {
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['ID'];
             header('Location: index.php');
-        }
-        else {
+        } else {
             $error .= "Benutzername oder Passwort sind falsch";
         }
     }

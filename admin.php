@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $error .= "Folgender Fehler ist aufgetreten: " . $mysqli->error;
         }
         $mysqli->close();
-
     }
 }
 ?>

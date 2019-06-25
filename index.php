@@ -10,10 +10,9 @@ include('php/db_connect.php');
 include("php/LoggedIn.php");
 
 if (isset($_SESSION['loggedin'])) {
-	$message .= "Eingeloggt als: ".$_SESSION['username'];
+    $message .= "Eingeloggt als: " . $_SESSION['username'];
 } else {
     $message .= "Sie sind als Gast unterwegs. Um selbst Rezepte erfassen zu können, loggen Sie sich bitte ein.";
-
 }
 
 if (empty($error)) {
@@ -25,7 +24,7 @@ if (empty($error)) {
 $mysqli->close();
 
 ?>
- 
+
 
 
 
@@ -34,16 +33,17 @@ $mysqli->close();
 <h1 class="title has-text-white">Index</h1>
 
 <?php
-    echo "<table class='table is-bordered is-hoverable is-fullwidth is-striped'><tr class='has-text-white'><th>Gericht</th><th>Tipp</th><th>Autor</th></tr>";
-    while ($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
-        echo
+echo "<table class='table is-bordered is-hoverable is-fullwidth is-striped'><tr class='has-text-white'><th>Gericht</th><th>Tipp</th><th>Autor</th></tr>";
+while ($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
+    echo
         '<tr>
-            <td>' . $row["Name"]. '</td>
-            <td>' . $row["Tipp"]. '</td>
-            <td>' . $row["ExtAutor"]. '</td>
-        </tr>';    }
+            <td>' . $row["Name"] . '</td>
+            <td>' . $row["Tipp"] . '</td>
+            <td>' . $row["ExtAutor"] . '</td>
+        </tr>';
+}
 
-    echo "</table>"; //Close the table in HTML
+echo "</table>"; //Close the table in HTML
 ?>
 
 <!-- Fill content to here -->

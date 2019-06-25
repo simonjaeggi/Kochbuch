@@ -58,9 +58,7 @@ $mysqli->close();
     <!-- Zutatenerfassen -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="zutat" class="input" type="text" placeholder="Zutat"
-             required="true" pattern="[A-Za-z]+"
-             title="Nur Buchstaben erlaubt ">
+            <input name="zutat" class="input" type="text" placeholder="Zutat" required pattern="[A-Za-z]+" title="Nur Buchstaben erlaubt ">
             <span class="icon is-small is-left">
                 <i class="fas fa-lemon"></i>
             </span>

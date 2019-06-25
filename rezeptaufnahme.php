@@ -67,9 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <h2 class="subtitle has-text-white">Autor des Rezepts *</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input name="autor" class="input" type="text" placeholder="Jamie Oliver"
-      required="true"
-      maxlength="45">
+      <input name="autor" class="input" type="text" placeholder="Jamie Oliver" required maxlength="45">
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -81,9 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <h2 class="subtitle has-text-white">Gericht *</h2>
   <div class="field">
     <p class="control has-icons-left has-icons-right">
-      <input name="gericht" class="input" type="text" placeholder="Lasagne"
-      required="true"
-      maxlength="50">
+      <input name="gericht" class="input" type="text" placeholder="Lasagne" required maxlength="50">
       <span class="icon is-small is-left">
         <i class="fas fa-hamburger"></i>
       </span>
