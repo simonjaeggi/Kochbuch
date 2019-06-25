@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     if (!empty(trim($_POST['zutat']))) {
         $zutat = htmlspecialchars(trim($_POST['zutat']));
 
-        if (!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z](?=.*\w+)/", $zutat)) {
+        if (!preg_match("/[a-zA-Z](?=.*\w+)/", $zutat)) {
             $error .= "Die Zutat entspricht nicht dem geforderten Format.<br />";
         }
     } else {
@@ -58,7 +58,9 @@ $mysqli->close();
     <!-- Zutatenerfassen -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-            <input name="zutat" class="input" type="text" placeholder="Zutat" required="true">
+            <input name="zutat" class="input" type="text" placeholder="Zutat"
+             required="true" pattern="[A-Za-z]+"
+             title="Nur Buchstaben erlaubt ">
             <span class="icon is-small is-left">
                 <i class="fas fa-lemon"></i>
             </span>
