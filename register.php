@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="field">
         <p class="control has-icons-left has-icons-right">
             <input name="firstname" class="input" type="text" placeholder="Vorname"
-            required="true"
+            required
             maxlength="50"
             pattern="(?=.*[a-z])(?=.*[A-Z])[A-Za-z]+"
             title="Bitte mit Grosbuchstabe starten, nur Buchstaben erlaubt">
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="field">
         <p class="control has-icons-left has-icons-right">
             <input name="lastname" class="input" type="text" placeholder="Nachname"
-            required="true"
+            required
             maxlength="50"
             pattern="(?=.*[a-z])(?=.*[A-Z])[A-Za-z]+"
             title="Bitte mit Grosbuchstabe starten, nur Buchstaben erlaubt">
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="field">
         <p class="control has-icons-left has-icons-right">
             <input name="email" class="input" type="email" placeholder="Email"
-            required="true"
+            required
             maxlength="50"
             title="Bitte geben sie eine gültige eMailadresse an">
             <span class="icon is-small is-left">
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="field">
         <p class="control has-icons-left has-icons-right">
             <input name="username" class="input" type="text" placeholder="Benutzername"
-            required="true"
+            required
             minlength= "5"
             maxlength="50"
               pattern="[A-Za-z0-9]+"
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="field">
         <p class="control has-icons-left">
             <input name="password" class="input" type="password" placeholder="Passwort"
-            required="true"
+            required
             maxlength="50"
             pattern="(?!=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W+).{8,50}"
             title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">

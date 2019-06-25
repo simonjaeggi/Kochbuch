@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Password -->
     <div class="field">
         <p class="control has-icons-left">
-            <input name="password" class="input" type="password" placeholder="Passwort" required="true" maxlength="50" pattern="(?!=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W+).{8,50}" title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">
+            <input name="password" class="input" type="password" placeholder="Passwort" required maxlength="50" pattern="(?!=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W+).{8,50}" title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
