@@ -3,9 +3,10 @@
             <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item is-active' is-active>Impressum</a>";
 session_start();
+
+include("php/LoggedIn.php");
+include("includes/filestart.php");
 ?>
-<?php include("includes/LoginButton.php"); ?>
-<?php include("includes/filestart.php"); ?>
 <!-- Fill content from here -->
 
 <h1 class="title has-text-white">Impressum</h1>

@@ -11,7 +11,7 @@ session_start();
 if (isset($_SESSION['loggedin'])) {
     header('Location: index.php');
 } 
-// Formular wurde gesendet und Besucher ist noch nicht angemeldet.
+// Formular wurde gesendet 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     // username
     if (!empty(trim($_POST['username']))) {

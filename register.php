@@ -131,7 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input name="username" class="input" type="text" placeholder="Benutzername"
             required="true"
             minlength= "5"
-            maxlength="50">
+            maxlength="50"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?!=.*\W+).{5,50}"
+              title="Minimum 5 Zeichen sind verlangt, keine Sonderzeichen">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -143,15 +145,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <p class="control has-icons-left">
             <input name="password" class="input" type="password" placeholder="Passwort"
             required="true"
-            required="true"
-            minlength= "5"
-            pattern="(?=^.{8,50}$)((?=.*\d+)(?!=.*\w+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])" title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">
+            maxlength="50"
+            pattern="(?!=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W+).{8,50}"
+            title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
         </p>
     </div>
-
     <!-- Buttons -->
     <div class="field">
         <button class="button is-success" type="submit">
