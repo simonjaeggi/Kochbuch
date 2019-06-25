@@ -7,7 +7,8 @@ $nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 session_start();
 include('php/db_connect.php');
-include("includes/LoginButton.php");
+include("php/LoggedIn.php");
+
 if (isset($_SESSION['loggedin'])) {
 	$message .= "Eingeloggt als: ".$_SESSION['username'];
 } else {

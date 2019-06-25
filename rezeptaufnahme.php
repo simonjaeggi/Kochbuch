@@ -7,7 +7,7 @@ $message = "";
 $error = "";
 $autor = $gericht = $tipp = $user = "";
 session_start();
-include("includes/LoginButton.php");
+include("php/LoggedIn.php");
 include('php/db_connect.php');
 
 // Wurden Daten mit "POST" gesendet?

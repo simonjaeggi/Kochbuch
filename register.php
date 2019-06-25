@@ -2,14 +2,19 @@
 <?php
 $message="";
 $error="";
-$nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
+$nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
             <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
+            
 session_start();
-include("includes/LoginButton.php");
-
 include('php/db_connect.php');
+$Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
+
+//Benutzer weiterleiten falls bereits eingeloggt.
+if (isset($_SESSION['loggedin'])) {
+    header('Location: index.php');
+} 
 
 // Initialisierung
 $firstname = $lastname = $email = $username = '';
@@ -41,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $email = htmlspecialchars(trim($_POST['email']));
         //validirung nach RFC 822
       if(!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
-        $error .= "die emailadresse entspricht nicht dem geforderten Format.<br />";
+        $error .= "Die Email entspricht nicht dem geforderten Format.<br />";
         }
     }
     else {
-      $error .= "Geben Sie bitte einen korrekte emailadresse ein.<br />";
+      $error .= "Geben Sie bitte eine korrekte Email ein.<br />";
     }
 //Username
     if (isset($_POST['username']) && !empty(trim($_POST['username']))) {

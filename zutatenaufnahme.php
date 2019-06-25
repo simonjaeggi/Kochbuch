@@ -4,7 +4,7 @@
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 $Login = "<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 session_start();
-include("includes/LoginButton.php");
+include("php/LoggedIn.php");
 include('php/db_connect.php');
 $error = '';
 $message = '';
