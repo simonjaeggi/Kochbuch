@@ -2,15 +2,18 @@
 <?php
 $message="";
 $error="";
-$nav = "<a href='/Kochbuch/' class='navbar-item  is-active'>Rezepte</a>
+$nav = "<a href='/Kochbuch/' class='navbar-item'>Rezepte</a>
             <a href='rezeptaufnahme.php' class='navbar-item'>Rezeptaufnahme</a>
             <a href='zutatenaufnahme.php' class='navbar-item'>Zutatenaufnahme</a>
             <a href='impressum.php' class='navbar-item'>Impressum</a>";
 session_start();
-include("includes/LoginButton.php");
-
 include('php/db_connect.php');
+$Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bold;'>Login/Registrieren</a>";
 
+//Benutzer weiterleiten falls bereits eingeloggt.
+if (isset($_SESSION['loggedin'])) {
+    header('Location: index.php');
+} 
 // Initialisierung
 $firstname = $lastname = $email = $username = '';
 
