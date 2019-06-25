@@ -30,4 +30,4 @@ mysql -u root < "E:/xampp/htdocs/Kochbuch/sql/kochbuch_editor.sql"
 _Für neuere Mysql Versionen muss die Benutzererstellung leicht angepasst werden. Dazu kann in der Datei "Kochbuch_editor.sql" der # vor der zweiten Zeile entfernt, und vor der dritten Zeile eingefügt werden._
 
 ## Fertigstellung
-Wenn die oben genannten Punkte erledigt wurden, kann das Projekt nun über [localhost/Kochbuch]([http://localhost/Kochbuch]) erreicht werden.
+Wenn die oben genannten Punkte erledigt wurden, kann das Projekt nun über [localhost/Kochbuch](http://localhost/Kochbuch) erreicht werden.
