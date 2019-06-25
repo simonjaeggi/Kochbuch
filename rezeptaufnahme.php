@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <!-- Tipp -->
   <div class="block">
     <h2 class="subtitle has-text-white">Tipp</h2>
-    <textarea name="tipp" placeholder="Tipps zum Rezept" class="Textarea"></textarea>
+    <textarea name="tipp" placeholder="Tipps zum Rezept" class="textarea"></textarea>
   </div>
 
   <!-- Submit -->

@@ -1,7 +1,7 @@
-<!DOCTYPE>
-<html>
-<?php include("includes/head.html"); ?>
+<!DOCTYPE html>
+<html class="has-background-grey-darker has-text-white" lang="de"> 
 
+<?php include("includes/head.html");?>
 <body class="has-background-grey-darker has-text-white">
     <div id="wrapper">
         <?php include("includes/nav.php"); ?>
