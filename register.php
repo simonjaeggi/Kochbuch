@@ -149,7 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input name="password" class="input" type="password" placeholder="Passwort"
             required="true"
             minlength= "8"
-            maxlength="50">
+            maxlength="50"
+            required="true"
+            minlength= "5"
+            pattern="(?=^.{8,50}$)((?=.*\d+)(?!=.*\w+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])" title="Minimum 8 Zeichen, Gross/Kleinbuchstaben, Zahl und Sonderzeichen sind verlangt">
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
