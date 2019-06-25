@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['username']) && !empty(trim($_POST['username']))) {
         $username = htmlspecialchars(trim($_POST['username']));
 
-        if (!preg_match("/(?=.[a-z])(?=.[A-Z])[a-zA-Z0-9]{5,50}/", $username)) {
+        if (!preg_match('/^[a-z\d_]{5,50}$/i', $username)) {
             $error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
         }
     } else {
