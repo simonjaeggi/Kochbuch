@@ -32,8 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (isset($_POST['tipp']) && !empty(trim($_POST['tipp']))) {
     $tipp = htmlspecialchars(trim($_POST['tipp']));
-  } else {
-    $message .= "Sie haben keinen Tipp angegeben. <br>";
   }
   session_regenerate_id();
   if (empty($error)) {
