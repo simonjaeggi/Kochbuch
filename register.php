@@ -13,7 +13,7 @@ $Login="<a class='navbar-item is-active' href='login.php' style='font-weight:bol
 //Benutzer weiterleiten falls bereits eingeloggt.
 if (isset($_SESSION['loggedin'])) {
     header('Location: index.php');
-} 
+}
 // Initialisierung
 $firstname = $lastname = $email = $username = '';
 
@@ -80,6 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $stmt = $mysqli->prepare($query);
         $stmt->bind_param("sssss", $firstname, $lastname, $username, $hashedpassword, $email);
         $stmt->execute();
+
+        if (empty($mysqli->error)) {
+            $message .= "Sie haben sich erfolgreich registriert.";
+          } else {
+            $error .= "Folgender Fehler ist aufgetreten: " . $mysqli->error;
+          }
         $mysqli->close();
 
         header('Location: login.php');
@@ -98,7 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <p class="control has-icons-left has-icons-right">
             <input name="firstname" class="input" type="text" placeholder="Vorname"
             required="true"
-            maxlength="50">
+            maxlength="50"
+            pattern="(?=.*[a-z])(?=.*[A-Z])[A-Za-z]+"
+            title="Bitte mit Grosbuchstabe starten, nur Buchstaben erlaubt">
             <span class="icon is-small is-left">
                 <i class="far fa-id-badge"></i>
             </span>
@@ -109,7 +117,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <p class="control has-icons-left has-icons-right">
             <input name="lastname" class="input" type="text" placeholder="Nachname"
             required="true"
-            maxlength="50">
+            maxlength="50"
+            pattern="(?=.*[a-z])(?=.*[A-Z])[A-Za-z]+"
+            title="Bitte mit Grosbuchstabe starten, nur Buchstaben erlaubt">
             <span class="icon is-small is-left">
                 <i class="fas fa-id-badge"></i>
             </span>
@@ -122,7 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <p class="control has-icons-left has-icons-right">
             <input name="email" class="input" type="email" placeholder="Email"
             required="true"
-            maxlength="50">
+            maxlength="50"
+              title="Bitte geben sie eine gültige eMailadresse an">
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -135,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             required="true"
             minlength= "5"
             maxlength="50"
-              pattern="(?=.*[a-z])(?=.*[A-Z])(?!=.*\W+).{5,50}"
+              pattern="[A-Za-z0-9]+"
               title="Minimum 5 Zeichen sind verlangt, keine Sonderzeichen">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
