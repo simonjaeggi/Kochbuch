@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input name="email" class="input" type="email" placeholder="Email"
             required="true"
             maxlength="50"
-              title="Bitte geben sie eine gültige eMailadresse an">
+            title="Bitte geben sie eine gültige eMailadresse an">
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
