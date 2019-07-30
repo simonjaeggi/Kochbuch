@@ -2,24 +2,23 @@ Unschönes:
 
 Keine Fehlermeldung bei falschem Benutzer und falschem pw
 Benutzer mit gleichem Namen können erstellt werden.
-Login Seite kann über URL erreicht werden, wenn bereits eingeloggt.
 
-Wichtiges:
+Formulare aufbauen
+Herausfinden wie json parser funktioniert
+Formular bauen (js mit feldern)
+Select statement für Zutaten 
+Zutaten jeweils in einem dropdown anzeigen/auswählen können
+Suchfunktion im dropdown
+Zusätzliches Feld bei welchem direkt Zutaten erfasst werden können
 
-Passwort Reset funktion
-    Admin Seite für eingeloggte Benutzer
-    Benutzerinformationen anzeigen
-    Passwort reset funktion anbieten
+Rezeptübersicht
+Rezepte aus einer Liste/Übersicht anklicken können
+Einzelnes Rezept öffnet sich in einer Übersicht
+Suchfunktion für Rezepte
+Möglichkeit Rezepte zu edititeren/löschen
 
-Testkonzept erstellen
-    Clientseitige Validierung
-    Serverseitige Validierung
-    Login
-    Registrieren
-    Passwort reset
-    Fehlermeldungen
+Zutatenübersicht
+Übersicht für Zutaten
+Möglichkeit Zutaten zu löschen
 
-Falls nicht eingeloggt: 
-    Darf kein Rezept aufgenommen werden
-    Darf keine Zutat aufgenommen werden
     
