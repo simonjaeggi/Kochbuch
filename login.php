@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
     } else {
         $error .= "Geben Sie bitte das Passwort an.<br />";
     }
+
 }
 // kein fehler
 if (empty($error)) {
